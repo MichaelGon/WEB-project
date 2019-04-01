@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if "username" in session %}
+<div>
+<a href = "/add_user" >
+<button type="button" class="btn btn-success">
+Добавить пользователя</button>
+</a>
+<a href = "/stats" >
+<button type="button" class="btn btn-danger">
+Статистика по пользователям</button>
+</a>
+<a href ="/add_news">
+<button type="button" class="btn btn-warning">Добавить новость</button>
+</a>
+</div>
+{% endif %}
+<!-- Posts section -->
+<div class="blog">
+ <div class="container">
+ <h1 class="text-center">Рубрики</h1>
+  <div class="row">
+   <div class="col-md-4 col-lg-4 col-sm-12">
+    <div class="card">
+     <div class="card-img">
+      <img align="center" src="/static/img/new-1.png" class="img-fluid">
+     </div>
+     
+     <div class="card-body">
+     <h4 class="card-title">Черничный микс</h4>
+      <p class="card-text">
+       
+       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+     </div>
+     <div class="card-footer">
+      <a href="" class="card-link">Читать</a>
+     </div>
+    </div>
+   </div>
+   <div class="col-md-4 col-lg-4 col-sm-12">
+    <div class="card">
+     <div class="card-img">
+      <img align="center" src="/static/img/new-2.png" class="img-fluid">
+     </div>
+     
+     <div class="card-body">
+        <h4 class="card-title">Желтый туман</h4>
+      <p class="card-text">
+       
+       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+     </div>
+     <div class="card-footer">
+      <a href="" class="card-link">Читать</a>
+     </div>
+    </div>
+   </div>
+   <div class="col-md-4 col-lg-4 col-sm-12">
+    <div class="card">
+     <div class="card-img">
+      <img align="center" src="/static/img/new-3.png" class="img-fluid">
+     </div>
+     
+     <div class="card-body">
+     <h4 class="card-title">Черное и белое</h4>
+      <p class="card-text">
+       
+       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+     </div>
+     <div class="card-footer">
+      <a href="" class="card-link">Читать</a>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>           
+<h1>Новости от пользователей</h1>
+{% for item in news %}
+    <div class="text-muted" role="alert" style = "text-align: left">
+        <h4>{{item[4]}}&nbsp;:&nbsp;{{item[1]}}</h4>
+        <div>{{item[2]}}</div>
+      {% if "username" in session %}
+
+        <a href="/delete_news/{{item[0]}}">Удалить новость</a>
+    {% endif %}
+    </div>
+{% endfor %}
+{% endblock %}

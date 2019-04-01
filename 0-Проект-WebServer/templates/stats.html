@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}    
+<h1>Статистика по пользователям</h1>
+{% for item in stats_list %}
+    <div class="text-muted" role="alert" style = "text-align: left">
+        <h4>{{item[0]}}&nbsp;:&nbsp;{{item[1]}}</h4>
+    </div>
+{% endfor %}
+{% endblock %}
